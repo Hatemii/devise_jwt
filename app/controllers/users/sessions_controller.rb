@@ -5,7 +5,7 @@ module Users
     private
     
       def respond_with(resource, _opts = {})
-        render json: { message: 'Logged.' }, status: :ok
+        render json: { message: 'You need to Log In' }, status: :ok
       end
       def respond_to_on_destroy
         current_user ? log_out_success : log_out_failure
