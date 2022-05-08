@@ -9,7 +9,8 @@ Rails.application.routes.draw do
                 controllers: {
                   sessions: 'users/sessions',
                   registrations: 'users/registrations'
-                }
+                }, 
+                defaults: { format: :json }
 
   namespace :api do
     resources :posts
