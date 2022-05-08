@@ -310,6 +310,7 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # ==> jwt secret key from env
+  # generate secret key with command "rails secret on terminal"
   config.jwt do |jwt|
     jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
     jwt.dispatch_requests = [
