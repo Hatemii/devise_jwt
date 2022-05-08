@@ -5,16 +5,20 @@ module Users
     private
     
       def respond_with(resource, _opts = {})
-        render json: { message: 'You need to Log In' }, status: :ok
+        render json: {
+          status: { code: 200, message: 'Logged in sucessfully.' }
+          # data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+        }, status: :ok
       end
+
       def respond_to_on_destroy
-        current_user ? log_out_success : log_out_failure
-      end
-      def log_out_success
-        render json: { message: "Logged out." }, status: :ok
-      end
-      def log_out_failure
-        render json: { message: "Logged out failure."}, status: :unauthorized
+        if current_user
+          render json: { status: 200, message: "logged out successfully" }, 
+          status: :ok
+        else
+          render json: { status: 401, message: "Couldn't find an active session." }, 
+          status: :unauthorized
+        end
       end
   end
 end
