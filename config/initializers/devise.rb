@@ -309,16 +309,18 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
+  # ==> Configuration for :validatable
+  # Range for password length.
+  config.password_length = 6..128
+
+  # Email regex used to validate email formats. It simply asserts that
+  # one (and only one) @ exists in the given string. This is mainly
+  # to give user feedback and not to assert the e-mail validity.
+  config.email_regexp = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
   # ==> jwt secret key from env
   # generate secret key with command "rails secret on terminal"
   config.jwt do |jwt|
-    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
-    jwt.dispatch_requests = [
-      ['POST', %r{^/sign_in$}]
-    ]
-    jwt.revocation_requests = [
-      ['DELETE', %r{^/sign_out$}]
-    ]
-    jwt.expiration_time = 15.day.to_i
+    jwt.secret = Rails.application.credentials.devise[:jwt_secret_key]
   end
 end
