@@ -5,4 +5,4 @@ using:
   gem 'devise'
   gem 'devise-jwt'
   
-before staring server -> bundle exec rails secret  
+before starting server -> bundle exec rails secret  
