@@ -5,4 +5,6 @@ using:
   gem 'devise'
   gem 'devise-jwt'
   
-before starting server -> bundle exec rails secret  
+before starting server -> remove app/config/credentials.yml.enc
+console -> bundle exec rails secret
+rails s
