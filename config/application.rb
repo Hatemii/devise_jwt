@@ -25,6 +25,6 @@ module DeviseJwt
     config.api_only = true
 
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, key: Rails.application.credentials.devise[:jwt_secret_key]
+    config.middleware.use ActionDispatch::Session::CookieStore, key: Rails.application.credentials[:secret_key_base]
   end
 end
